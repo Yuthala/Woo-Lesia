@@ -12,35 +12,35 @@
 				</div>
 				<div class="carousel-inner">
 				  <div class="carousel-item active">
-					<img src="assets/img/slider/1.jpg" class="d-block w-100" alt="...">
+					<img src="<?php echo get_template_directory_uri() ?>/assets/img/slider/1.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 					  <h2>First slide label</h2>
 					  <p>Some representative placeholder content for the first slide.</p>
 					</div>
 				  </div>
 				  <div class="carousel-item">
-					<img src="assets/img/slider/2.jpg" class="d-block w-100" alt="...">
+					<img src="<?php echo get_template_directory_uri() ?>/assets/img/slider/2.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 					  <h2>Second slide label</h2>
 					  <p>Some representative placeholder content for the second slide.</p>
 					</div>
 				  </div>
 				  <div class="carousel-item">
-					<img src="assets/img/slider/3.jpg" class="d-block w-100" alt="...">
+					<img src="<?php echo get_template_directory_uri() ?>/assets/img/slider/3.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 					  <h2>Third slide label</h2>
 					  <p>Some representative placeholder content for the third slide.</p>
 					</div>
 				  </div>
 				  <div class="carousel-item">
-					<img src="assets/img/slider/4.jpg" class="d-block w-100" alt="...">
+					<img src="<?php echo get_template_directory_uri() ?>/assets/img/slider/4.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 					  <h2>Third slide label</h2>
 					  <p>Some representative placeholder content for the fourth slide.</p>
 					</div>
 				  </div>
 				  <div class="carousel-item">
-					<img src="assets/img/slider/5.jpg" class="d-block w-100" alt="...">
+					<img src="<?php echo get_template_directory_uri() ?>/assets/img/slider/5.jpg" class="d-block w-100" alt="...">
 					<div class="carousel-caption d-none d-md-block">
 					  <h2>Third slide label</h2>
 					  <p>Some representative placeholder content for the fifth slide.</p>
@@ -115,7 +115,7 @@
 							</div>
 							<div class="product-thumb">
 								<a href="product.html">
-									<img src="assets/img/products/1.jpg" alt="1">
+									<img src="<?php echo get_template_directory_uri() ?>/assets/img/products/1.jpg" alt="1">
 								</a>
 							</div>
 							<div class="product-details">
@@ -143,7 +143,7 @@
 							</div>
 							<div class="product-thumb">
 								<a href="product.html">
-									<img src="assets/img/products/2.jpg" alt="1">
+									<img src="<?php echo get_template_directory_uri() ?>/assets/img/products/2.jpg" alt="1">
 								</a>
 							</div>
 							<div class="product-details">
@@ -169,7 +169,7 @@
 							</div>
 							<div class="product-thumb">
 								<a href="product.html">
-									<img src="assets/img/products/3.jpg" alt="1">
+									<img src="<?php echo get_template_directory_uri() ?>/assets/img/products/3.jpg" alt="1">
 								</a>
 							</div>
 							<div class="product-details">
@@ -196,7 +196,7 @@
 							</div>
 							<div class="product-thumb">
 								<a href="product.html">
-									<img src="assets/img/products/4.jpg" alt="1">
+									<img src="<?php echo get_template_directory_uri() ?>/assets/img/products/4.jpg" alt="1">
 								</a>
 							</div>
 							<div class="product-details">
@@ -225,7 +225,7 @@
 							</div>
 							<div class="product-thumb">
 								<a href="product.html">
-									<img src="assets/img/products/5.jpg" alt="1">
+									<img src="<?php echo get_template_directory_uri() ?>/assets/img/products/5.jpg" alt="1">
 								</a>
 							</div>
 							<div class="product-details">
@@ -254,7 +254,7 @@
 							</div>
 							<div class="product-thumb">
 								<a href="product.html">
-									<img src="assets/img/products/6.jpg" alt="1">
+									<img src="<?php echo get_template_directory_uri() ?>/assets/img/products/6.jpg" alt="1">
 								</a>
 							</div>
 							<div class="product-details">
@@ -283,7 +283,7 @@
 							</div>
 							<div class="product-thumb">
 								<a href="product.html">
-									<img src="assets/img/products/7.jpg" alt="1">
+									<img src="<?php echo get_template_directory_uri() ?>/assets/img/products/7.jpg" alt="1">
 								</a>
 							</div>
 							<div class="product-details">
@@ -312,7 +312,7 @@
 							</div>
 							<div class="product-thumb">
 								<a href="product.html">
-									<img src="assets/img/products/8.jpg" alt="1">
+									<img src="<?php echo get_template_directory_uri() ?>/assets/img/products/8.jpg" alt="1">
 								</a>
 							</div>
 							<div class="product-details">

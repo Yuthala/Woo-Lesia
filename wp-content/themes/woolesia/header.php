@@ -101,7 +101,7 @@
 					<table class="table offcanvasCart-table">
 						<tbody>
 							<tr>
-								<td class="product-img-td"><a href="#"><img src="assets/img/products/1.jpg"></a></td>
+								<td class="product-img-td"><a href="#"><img src="<?php echo get_template_directory_uri() ?>/assets/img/products/1.jpg"></a></td>
 								<td><a href="#">Product 6 Lorem ipsum dolor sit amet, consectetur adipisicing.</a></td>
 								<td>$65</td>
 								<td>&times;1</td>
@@ -109,7 +109,7 @@
 							</tr>
 
 							<tr>
-								<td class="product-img-td"><a href="#"><img src="assets/img/products/2.jpg"></a></td>
+								<td class="product-img-td"><a href="#"><img src="<?php echo get_template_directory_uri() ?>/assets/img/products/2.jpg"></a></td>
 								<td><a href="#">Product 2</a></td>
 								<td>$80</td>
 								<td>&times;2</td>
@@ -117,7 +117,7 @@
 							</tr>
 
 							<tr>
-								<td class="product-img-td"><a href="#"><img src="assets/img/products/3.jpg"></a></td>
+								<td class="product-img-td"><a href="#"><img src="<?php echo get_template_directory_uri() ?>/assets/img/products/3.jpg"></a></td>
 								<td><a href="#">Product 3</a></td>
 								<td>$100</td>
 								<td>&times;1</td>
