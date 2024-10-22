@@ -5,6 +5,9 @@ parameters:
         - tests
     excludes_analyse:
         - tests/Composer/Installers/Test/PolyfillTestCase.php
+    bootstrapFiles:
+        - vendor/php-stubs/woocommerce-stubs/woocommerce-stubs.php
+        #- vendor/php-stubs/woocommerce-stubs/woocommerce-packages-stubs.php
 
 includes:
     - vendor/phpstan/phpstan-phpunit/extension.neon

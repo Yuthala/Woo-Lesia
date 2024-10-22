@@ -70,7 +70,7 @@
 					<div class="row align-items-center">
 						<!--Header logo-->
 						<div class="col-sm-6">
-							<a href="index.html" class="header-logo h3">E-Shop</a>
+							<a href="<?php echo home_url('/') ?>" class="header-logo h3"><?php bloginfo('name')?></a>
 						</div>
 
 						<!-- Search form-->
@@ -156,7 +156,6 @@
 		<div class="header-bottom sticky-top" id="header-nav">
 			<nav class="navbar navbar-expand-lg navbar-dark bg-dark" data-bs-theme="dark">
 				<div class="container">
-					<a class="navbar-brand" href="#">Navbar</a>
 					<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 					</button>
@@ -167,7 +166,15 @@
 						</div>
 
 						<div class="offcanvas-body">
-							<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<?php
+						wp_nav_menu( array(
+							'theme_location' => 'header-menu',
+                            'container' => false,
+                            'menu_class' => 'navbar-nav',
+                            'walker' => new Woolesia_Header_Menu(),
+						) );
+						?>
+							<!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 								<li class="nav-item">
 									<a class="nav-link active" aria-current="page" href="#">Home</a>
 								</li>
@@ -211,7 +218,7 @@
 								<li class="nav-item">
 									<a class="nav-link disabled">Disabled</a>
 								</li>
-							</ul>
+							</ul> -->
 						</div>
 					</div>
 

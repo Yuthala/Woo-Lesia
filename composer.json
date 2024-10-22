@@ -1,0 +1,6 @@
+{
+    "require-dev": {
+        "php-stubs/woocommerce-stubs": "^9.3",
+        "phpstan/phpstan": "^1.12"
+    }
+}
