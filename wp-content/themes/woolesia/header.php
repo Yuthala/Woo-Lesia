@@ -12,6 +12,8 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<?php $woolesia_theme_options = woolesia_theme_options() ?>
+
 <div class="wrapper">
 		<header class="header">
 			<!--Header Top-->
@@ -20,16 +22,27 @@
 					<div class="row">
 						<div class="col-6 col-sm-4">
 							<div class="header-top-phone">
+								<?php if (!empty( $woolesia_theme_options['phone'])): ?>
 								<i class="fa-solid fa-mobile-screen"></i>
-								<a href="tel:+71234456778" class="ms-2">+7 123-445-67-78</a>
+								<a href="tel:+<?php echo str_replace(array(' ', '-', '+'), array('', '', ''), $woolesia_theme_options['phone']) ?>" class="ms-2"><?php echo $woolesia_theme_options['phone'] ?></a>
+								<?php endif; ?>
 							</div>
 						</div>
 
 						<div class="col-sm-4 d-none d-sm-block">
 							<ul class="social-icons">
-								<li><a href="#"><i class="fa-brands fa-youtube"></i></a></li>
-								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fa-brands fa-instagram"></i></i></a></li>
+
+								<?php if( !empty($woolesia_theme_options['youtube'])): ?>
+								<li><a href="<?php echo $woolesia_theme_options['youtube'] ?>"><i class="fa-brands fa-youtube"></i></a></li>
+								<?php endif; ?>
+
+								<?php if( !empty($woolesia_theme_options['facebook'])): ?>
+								<li><a href="<?php echo $woolesia_theme_options['facebook'] ?>"><i class="fa-brands fa-facebook-f"></i></a></li>
+								<?php endif; ?>
+
+								<?php if( !empty($woolesia_theme_options['instagram'])): ?>
+								<li><a href="<?php echo $woolesia_theme_options['instagram'] ?>"><i class="fa-brands fa-instagram"></i></i></a></li>
+								<?php endif; ?>
 							</ul>
 						</div>
 
