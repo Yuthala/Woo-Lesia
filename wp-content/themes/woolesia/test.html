@@ -1,0 +1,1020 @@
+@extends('layouts.master')
+@section('content')
+<div id="content">
+<div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-8 task-expertise">
+                    <h1>
+						Название задачи
+                    </h1>
+                    <!-- <div class="det-pr-type">
+                    </div> -->
+                    <!-- <div class="project-event-title-link">
+                        @php
+                            $participationLastEvent = $project->getLastEventByParticipation();
+                            if($participationLastEvent) {
+                                echo '<a href="/event/'.$participationLastEvent->id.'">'.$participationLastEvent->title.'</a>';
+                            }
+                            else {
+                                echo '<a href="/categories#panel-20">Портфолио</a>';
+                            }
+                        @endphp
+                    </div>
+                    <div class="det-pr-mainimg"
+                         @if($project->cover_image) style="background-image: url(/{{$project->cover_image}})"@endif>
+                        @if($project->cover_image)
+                            <img src="/{{$project->cover_image}}" alt="some">
+                        @endif
+                    </div>
+                    <div class="det-pr__views-and-likes">
+                        <div class="det-pr__views-and-likes--item dpvalitem-views">
+                            <svg width="32" height="16" viewBox="0 0 32 18" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M11.0711 13.1531C8.30984 12.1844 6.12921 10.5336 4.83617 9C5.72567 7.94504 7.03519 6.83461 8.66483 5.92889C8.55683 6.43554 8.5 6.96114 8.5 7.5C8.5 9.75537 9.49553 11.7782 11.0711 13.1531ZM20.9289 13.1531C23.6902 12.1844 25.8708 10.5336 27.1638 9C26.2743 7.94503 24.9648 6.83461 23.3352 5.92889C23.4432 6.43554 23.5 6.96114 23.5 7.5C23.5 9.75537 22.5045 11.7782 20.9289 13.1531ZM16 0C8.66124 0 2.84674 4.294 0.621326 7.97287L0 9L0.621326 10.0271C2.84674 13.706 8.66124 18 16 18C23.3388 18 29.1533 13.706 31.3787 10.0271L32 9L31.3787 7.97287C29.1533 4.294 23.3388 0 16 0ZM16 4C14.067 4 12.5 5.567 12.5 7.5C12.5 9.433 14.067 11 16 11C17.933 11 19.5 9.433 19.5 7.5C19.5 5.567 17.933 4 16 4Z"
+                                      fill="#FFCC00"/>
+                            </svg>
+                            <div class="dpv-digits">{{$project->count_views}}</div>
+                        </div>
+                        <div class="det-pr__views-and-likes--item dpvalitem-likes @if(!$like) non-active @endif">
+                            <svg width="32" height="16" viewBox="0 0 32 27" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M11.3333 22.8667V13.2667C11.3333 12.399 11.8456 11.839 12.6373 10.9735C13.4878 10.0438 14.6607 8.76159 15.8672 6.36675C16.6149 4.88245 16.5406 3.39815 16.4915 2.4185C16.481 2.21014 16.4717 2.0246 16.4717 1.86675C16.4717 0.966748 17.3785 0.666748 17.6808 0.666748C18.5876 0.666748 21.0057 1.86675 21.0057 5.46675C21.0057 8.01789 20.6752 8.9918 20.3838 9.85063C20.3668 9.90074 20.3499 9.95046 20.3333 10.0001H29.3333C31.9999 10.0001 31.3333 14.0001 29.9999 14.0001C31.3333 15.0001 30.3333 18.0001 28.9999 18.0001C30.3333 19.0001 29.3755 21.6667 27.9999 21.6667C28.3755 23.6667 26.9999 24.6667 25.2373 24.6667H13.1468C11.9378 24.6667 11.3333 24.0667 11.3333 22.8667ZM2.66699 10.6667C1.56242 10.6667 0.666992 11.5622 0.666992 12.6667V24.6667C0.666992 25.7713 1.56242 26.6667 2.66699 26.6667H8.00033C9.10489 26.6667 10.0003 25.7713 10.0003 24.6667V12.6667C10.0003 11.5622 9.1049 10.6667 8.00033 10.6667H2.66699Z"
+                                      fill="#8EC63F"/>
+                            </svg>
+                            <div class="dpv-digits likes-count">{{$project->count_likes}}</div>
+                        </div>
+                        <div class="det-pr__views-and-likes--item dpvalitem-favs @if(!$favorite) non-active @endif">
+                            <svg width="32" height="16" viewBox="0 0 16 15" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M11.8971 1.30081C11.7809 1.30081 11.672 1.29724 11.5664 1.29377C11.237 1.28295 10.939 1.27317 10.5454 1.37596C10.1313 1.48407 9.59516 1.73582 9 2.38464V12.3347C10.1488 11.6608 11.3872 10.8053 12.4423 9.79555C13.9741 8.32965 15 6.6571 15 4.83557C15 4.13783 14.8141 3.21443 14.333 2.4981C13.8876 1.83477 13.1654 1.30081 11.8971 1.30081Z"
+                                      fill="#E05B56" stroke="#E05B56" stroke-width="2"/>
+                                <path d="M4.10287 1.30081C4.21913 1.30081 4.32798 1.29724 4.43361 1.29377C4.76295 1.28295 5.06099 1.27317 5.45464 1.37596C5.86868 1.48407 6.40484 1.73582 7 2.38464V12.3347C5.85121 11.6608 4.61284 10.8053 3.55771 9.79555C2.02592 8.32965 1 6.6571 1 4.83557C1 4.13783 1.18592 3.21443 1.66695 2.4981C2.11241 1.83477 2.83465 1.30081 4.10287 1.30081Z"
+                                      stroke="#E05B56" stroke-width="2"/>
+                            </svg>
+                            <div class="dpv-digits favorite-count">{{$project->favorite_count}}</div>
+                        </div>
+                    </div>
+                    @if($project->badge_name)
+                        <div class="det-pr-new">
+                            {{$project->badge_name}}
+                        </div>
+                    @endif
+                    {{--Temporarily hidden horizontal menu block--}} -->
+                    <!-- {{--<div class="det-pr-menu">
+                        <div class="js-fix-det-pr">
+                            @if($project->annotation)
+                                <div class="det-pr-menu_item">
+                                    <a class="js-det-link js-scroll"
+                                       href="#annotation">Аннотация</a>
+                                </div>
+                            @endif
+                            @if($project->idea)
+                                <div class="det-pr-menu_item">
+                                    <a class="js-det-link js-scroll"
+                                       href="#idea">Идея</a>
+                                </div>
+                            @endif
+                            @if($project->solution)
+                                <div class="det-pr-menu_item">
+                                    <a class="js-det-link js-scroll"
+                                       href="#solution">Решение</a>
+                                </div>
+                            @endif
+                            @if($project->presentation)
+                                <div class="det-pr-menu_item">
+                                    <a class="js-det-link js-scroll"
+                                       href="#presentation">Презентация</a>
+                                </div>
+                            @endif
+                            @if(count($images))
+                                <div class="det-pr-menu_item">
+                                    <a class="js-det-link js-scroll"
+                                       href="#gallery">Галерея</a><sup>{{count($images)}}</sup>
+                                </div>
+                            @endif
+                            @if(count($files))
+                                <div class="det-pr-menu_item">
+                                    <a class="js-det-link js-scroll"
+                                       href="#files">Файлы проекта</a><sup>{{count($files)}}</sup>
+                                </div>
+                            @endif
+                            @if(count($tasks))
+                                <div class="det-pr-menu_item">
+                                    <a class="js-det-link js-scroll"
+                                       href="#tasks">План проекта</a><sup>{{count($tasks)}}</sup>
+                                </div>
+                            @endif
+                            <div class="det-pr-menu_item">
+                                <a class="js-det-link js-scroll"
+                                   href="#team">Команда</a><sup>{{count($project->members)}}</sup>
+                            </div>
+                        </div>
+                    </div>--}} -->
+                    <!-- @if($project->annotation) -->
+					 <div class="task-expertise-info">
+						<div class="task-expertise-info_item">
+							<h3>
+								Описание задачи
+							</h3>
+							<p>
+								Такой результат говорит о том, что инструмент, которым вы пользуетесь вполне современен и хорош. Ваши умения и навыки помогают вам обрести необходимый опыт, а опыт позволяет расширять поле деятельности и ставить перед собой новые задачи.
+							</p>
+							<p>
+								Нужно ли остановиться на достигнутом и пользоваться тем, что есть? Можно, но… нет предела совершенству. Если вы чувствуете, что инструмент, состоящий из готовых к применению знаний и умений, может быть обновлен, пользуйтесь этой возможностью.
+							</p>
+						</div>
+
+						<div class="task-expertise-info_item">
+							<h3>
+								Компетенции
+							</h3>
+							<ol>
+								<li>Личностные ООП:</li>
+								<ul>
+									<li>Навыки много навыков</li>
+								</ul>
+							</ol>
+						</div>
+
+						<div class="task-expertise-info_item">
+							<h3>
+								Файлы и медиапроекты по задаче
+							</h3>
+							<div class="task-expertise-file">
+								<img src="../../img/icons/files/file_xls.svg" alt="attachment">
+								<label>Название файла</label>
+								<span>Размер</span>
+							</div>
+						</div>
+					 </div>
+
+                    @endif
+                    @if($project->idea)
+                        <div id="idea">
+                            <h2>
+                                Идея
+                            </h2>
+                            {!! $project->idea !!}
+                        </div>
+                    @endif
+                    @if($project->solution)
+                        <div id="solution">
+                            <h2>
+                                Решение
+                            </h2>
+                            {!! $project->solution !!}
+                        </div>
+                    @endif
+                    @if($project->presentation)
+                        <div id="presentation">
+                            <h2>Презентация</h2>
+                            <div class="project-presentation">
+                                <div id="adobe-dc-view" class="presentation-container"></div>
+                            </div>
+                        </div>
+
+                        @push('bottomScripts')
+                            <script src="https://acrobatservices.adobe.com/view-sdk/viewer.js"></script>
+                            <script type="text/javascript">
+                                document.addEventListener("adobe_dc_view_sdk.ready", function() {
+                                    var adobeDCView = new AdobeDC.View({
+                                        clientId: "{{ env('ADOBE_EMBED_CLIENT_ID') }}",
+                                        divId: "adobe-dc-view"
+                                    });
+
+                                    adobeDCView.previewFile({
+                                        content:{
+                                            location:{ url: "{{ env('APP_URL' )}}/{{ $project->presentation['src'] }}" }
+                                        },
+                                        metaData: {
+                                            fileName: "{{ $project->presentation['name'] }}"
+                                        }
+                                    },
+                                    {
+                                        embedMode: "SIZED_CONTAINER",
+                                        showDownloadPDF: false,
+                                        showPrintPDF: false
+                                    });
+                                });
+                            </script>
+                        @endpush
+                    @endif
+                    @if(count($images) || count($videos))
+                        <h2>
+                            Галерея
+                        </h2>
+                        <section class="slider_object" id="gallery">
+                            <div class="slider-inner project-slider" data-arrows="true">
+                                @foreach($videos as $video)
+                                    <a href="{{$video->video}}"
+                                        data-video="true"
+                                        data-img="{{$video->preview_image}}"
+                                        data-caption="{{$video->title}}">
+                                        <img src="{{$video->preview_image}}" alt="">
+                                    </a>
+                                @endforeach
+                                @foreach($images as $image)
+                                    <img src="/{{$image->src}}" data-caption="{{$image->name}}" alt="">
+                                @endforeach
+                            </div>
+                        </section>
+                    @endif
+                    @if(count($files))
+                        <section id="files">
+                            <h2>
+                                Файлы проекта
+                            </h2>
+                            <div class="block50">
+                                @for($i = 0; $i < count($files); $i += 2)
+                                    <div class="project-files">
+                                        <img class="file-icon"
+                                             src="{{ \App\Helpers\FileHelper::getFileIconPath($files[$i]->src) }}">
+                                        <a class="icon" href="/{{$files[$i]->src}}" title="Скачать">
+                                            @if(substr($files[$i]->name, -3) === 'sb3' || substr($files[$i]->name, -3) === 'sb2')
+                                                <span>Скачать {{$files[$i]->name}}</span>
+                                            @else
+                                                <span>{{ $files[$i]->name }}</span> {{ \App\Helpers\FileHelper::formatBytes($files[$i]->size, 2) }}
+                                            @endif
+                                        </a>
+                                        {{--<a class="icon" href="/{{$files[$i]->src}}" title="Открыть"><span>Открыть в новой вкладке {{$files[$i]->name}}</span></a>--}}
+                                    </div>
+                                @endfor
+                            </div>
+                            <div class="block50">
+                                @for($i = 1; $i < count($files); $i += 2)
+                                    <div class="project-files">
+                                        <img class="file-icon"
+                                             src="{{ \App\Helpers\FileHelper::getFileIconPath($files[$i]->src) }}">
+                                        <a class="icon" href="/{{$files[$i]->src}}" title="Скачать">
+                                            @if(substr($files[$i]->name, -3) === 'sb3' || substr($files[$i]->name, -3) === 'sb2')
+                                                <span>Скачать {{$files[$i]->name}}</span>
+                                            @else
+                                            <span>{{ $files[$i]->name }}</span> {{ \App\Helpers\FileHelper::formatBytes($files[$i]->size, 2) }}
+                                            @endif
+                                        </a>
+                                        {{--<a class="icon" href="/{{$files[$i]->src}}" title="Открыть"><span>Открыть в новой вкладке {{$files[$i]->name}}</span></a>--}}
+                                    </div>
+                                @endfor
+                            </div>
+                            <a href="/api/get-project-files/{{$project->id}}" class="mass-files-download"
+                               target="_blank">Скачать одним архивом</a>
+                        </section>
+                    @endif
+                    @if(count($tasks))
+                        <section id="tasks">
+                            <h2>
+                                План проекта
+                            </h2>
+                            <div class="plan-proj-counter">
+                                @foreach($tasks as $key => $task)
+                                    <div class="plan-proj" data-value="{{$task->id}}">
+                                        <!-- plan-proj-open -->
+                                        <div class="plan-proj-fst">
+                                            <div class="proj-fst-1">
+                                                {{$key+1}}.
+                                            </div>
+                                            <div class="proj-fst-2 js-proj-fst">
+                                                <span>{{$task->name}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="plan-proj-sst">
+                                            <div class="plan-proj-threecol request-col">
+                                                Исполнитель:
+                                                <span>
+                                                @if($task->user)
+                                                        <a href="/profile/{{$task->user['id']}}">{{$task->user['full_name']}}</a>
+                                                    @else
+                                                        @if($project->status === 'Проект завершен' || $task->status == 'Завершена')
+                                                            Не указан
+                                                        @else
+                                                            @if($task->requested_by_user)
+                                                                @if($task->answer_task_request === false)
+                                                                    Ваша заявка отклонена
+                                                                @else
+                                                                    Ваша заявка рассматривается
+                                                                @endif
+                                                            @else
+                                                                @if($project->creator_id != $user->id && $project->director_user_id != $user->id)
+                                                                    <a href="" class="request_task"
+                                                                       data-value="{{$task->id}}"
+                                                                       data-window="want-to-make-proj"
+                                                                       onclick="reachGoal('Click_member_project', {URL: document.location.href});return true;">Стать исполнителем</a>
+                                                                @else
+                                                                    В поисках исполнителя
+                                                                @endif
+                                                            @endif
+                                                        @endif
+                                                    @endif
+                                                </span>
+                                            </div>
+                                            <div class="plan-proj-threecol">
+                                                Срок: <span>{{$task->term}}</span>
+                                            </div>
+                                            <div class="plan-proj-threecol">
+                                                Статус: <span>{{$task->status}}</span>
+                                            </div>
+                                            @if($is_creator)
+                                                {{--is_director ||--}}
+                                                @if($project->status !== 'Проект завершен')
+                                                    {{--<div class="plan-proj-threecol">--}}
+                                                    {{--<a href="../task/edit/{{$task->id}}">Редактировать задачу</a>--}}
+                                                    {{--</div>--}}
+                                                @endif
+                                            @endif
+                                        </div>
+                                        <div class="plan-proj-hst">
+                                            @if($project->status !== 'Проект завершен')
+                                                @if(!$task->user_id && (!$task->requested_by_user))
+                                                    <p>
+                                                        @if($project->creator_id != $user->id && $project->director_user_id != $user->id)
+                                                            <a href="javascript:void(0);"
+                                                               class="btn request_task_button"
+                                                               data-value="{{$task->id}}"
+                                                               data-window="want-to-make-proj"
+                                                               style="cursor: pointer">Стать исполнителем</a>
+                                                        @else
+                                                            <a href="javascript:void(0);"
+                                                               class="btn set_user_in_task_button"
+                                                               data-value="{{$task->id}}"
+                                                               data-window="ok-set-user-in-task"
+                                                               style="cursor: pointer">Стать исполнителем</a>
+                                                        @endif
+                                                    </p>
+                                                @endif
+                                                @if($project->creator_id == $user->id || $project->director_user_id == $user->id)
+                                                    @if($task->user_id && $task->status != 'Завершена')
+                                                        <a class=" btn close-task" href="javascript:void(0)"
+                                                           data-value="{{$task->id}}">Завершить задачу</a>
+                                                    @endif
+                                                @endif
+                                            @endif
+                                            <h3>
+                                                Описание задачи
+                                            </h3>
+                                            <ol class="list">
+                                                {!! $task->wording !!}
+                                            </ol>
+                                            <h3>
+                                                Компетенции
+                                            </h3>
+                                            <ol class="list">
+                                                @if($task->competences)
+                                                    @foreach($task->competences as $key=>$competences)
+                                                        <li>
+                                                            {{$competences[0]->parent_general}}/{{$key}}
+                                                            <ol>
+                                                                @foreach($competences as $competence)
+                                                                    <li>
+                                                                        {{$competence->name}}
+                                                                    </li>
+                                                                @endforeach
+                                                            </ol>
+                                                        </li>
+                                                    @endforeach
+                                                @endif
+                                            </ol>
+                                            @if(count($task->files))
+                                                <h3>
+                                                    Файлы и медиаматериалы по задаче:
+                                                </h3>
+                                                <div class="block50">
+                                                    @foreach($task->files as $key=> $file)
+                                                        <div class="task-files">
+                                                            <img class="file-icon"
+                                                                 src="{{\App\Helpers\FileHelper::getFileIconPath($file->src)}}">
+                                                            <a class="icon" href="/{{$file->src}}"
+                                                               title="Скачать">
+                                                                <span>{{$file->name}}</span> {{ \App\Helpers\FileHelper::formatBytes($file->size, 2) }}
+                                                            </a>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </section>
+                    @endif
+                    @if($project->countAchievements())
+                        <div id="achievements-section">
+                            <h3>Достижения</h3>
+                            <div id="achievement-section-slider" class="swiper-container">
+                                <div class="swiper-wrapper">
+                                    @foreach($project->getEventsList() as $event)
+                                        @if($project->getAchievementInEvent($event->id) !== null)
+                                            <div class="swiper-slide">
+                                                <div class="flip-card">
+                                                    <div class="flip-card-inner">
+                                                        <div class="flip-card-front">
+                                                            <div class="flip-card-front__white-box">
+                                                                <div class="flip-card-front__white-box_title">
+                                                                    «{{App\Helpers\Helper::formatString($event->title, 26)}}
+                                                                    »
+                                                                </div>
+                                                                <div class="flip-card-front__white-box_icon">
+                                                                    <svg width="46" height="46" viewBox="0 0 46 46"
+                                                                         fill="none"
+                                                                         xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M39.5 0.5H45.5V6.5H39.5V0.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M27.5 0.5H33.5V6.5H27.5V0.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M15.5 0.5H21.5V6.5H15.5V0.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M33.5 6.5H39.5V12.5H33.5V6.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M39.5 12.5H45.5V18.5H39.5V12.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M33.5 18.5H39.5V24.5H33.5V18.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M39.5 24.5H45.5V30.5H39.5V24.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M27.5 12.5H33.5V18.5H27.5V12.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M21.5 18.5H27.5V24.5H21.5V18.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M27.5 24.5H33.5V30.5H27.5V24.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M15.5 12.5H21.5V18.5H15.5V12.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M9.5 18.5H15.5V24.5H9.5V18.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M15.5 24.5H21.5V30.5H15.5V24.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M21.5 6.5H27.5V12.5H21.5V6.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M9.5 6.5H15.5V12.5H9.5V6.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M0.5 0.5H3.5V45.5H0.5V0.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M3.5 0.5H9.5V6.5H3.5V0.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M3.5 12.5H9.5V18.5H3.5V12.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                        <path d="M3.5 24.5H9.5V30.5H3.5V24.5Z"
+                                                                              fill="#FFCC00"/>
+                                                                    </svg>
+                                                                </div>
+                                                                <div class="flip-card-front__white-box_status">
+                                                                    @switch($project->getAchievementInEvent($event->id))
+                                                                        @case(0)
+                                                                            Лауреат
+                                                                            @break
+                                                                        @case(1)
+                                                                            Финалист
+                                                                            @break
+                                                                        @case(2)
+                                                                            Победитель
+                                                                            @break
+                                                                    @endswitch
+                                                                </div>
+                                                            </div>
+                                                            <div class="flip-card-front__mobile-text">
+                                                                {!! Purifier::clean($event->short_description) !!}
+                                                            </div>
+                                                        </div>
+                                                        <div class="flip-card-back">
+                                                            <div class="flip-card-back__title">
+                                                                «{{App\Helpers\Helper::formatString($event->title, 26)}}
+                                                                »
+                                                                {{$project->getParticipationDate($event->id)->year}}
+                                                            </div>
+                                                            <div class="flip-card-back__text">
+                                                                {!! Purifier::clean($event->short_description) !!}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                                <div id="ass-navi">
+                                    <button class="ass-navi-btn" id="assNaviBtnPrev">
+                                        <svg width="26" height="22" viewBox="0 0 26 22" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M4 12.0668L25.6 12.0668L25.6 9.93342L4 9.93342L13.3333 0.600084L10.4 0.600084L-4.54595e-07 11.0002L10.4 21.4001L13.3333 21.4001L4 12.0668Z"
+                                                  fill="#8EC63F"/>
+                                        </svg>
+                                    </button>
+                                    <div id="ass-navi-fraction"></div>
+                                    <button class="ass-navi-btn" id="assNaviBtnNext">
+                                        <svg width="27" height="22" viewBox="0 0 27 22" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                  d="M22.3994 12.0668L0.799411 12.0668L0.799411 9.93342L22.3994 9.93342L13.0661 0.600085L15.9994 0.600085L26.3994 11.0002L15.9994 21.4001L13.0661 21.4001L22.3994 12.0668Z"
+                                                  fill="#8EC63F"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    @if($project->getEventsList()->count())
+                        <div id="participation-section">
+                            <h3>Участие в мероприятиях</h3>
+                            <div class="psec-list">
+                                @foreach($project->getEventsList() as $event)
+                                    @php
+                                        $nomination = $project->getProjectNomination($event->id);
+                                        $group = $project->getProjectAgeGroup($event->id);
+                                    @endphp
+                                    <div class="psec-list__item">
+                                        <div class="psec-list__item_year">
+                                            {{$project->getParticipationDate($event->id)->year}}
+                                        </div>
+                                        <a href="/event/{{$event->id}}"
+                                           class="psec-list__item_title">{{$event->title}}</a>
+                                        @if($nomination)
+                                            <div class="psec-list__item_nomination">
+                                                Номинация
+                                                <p>{{$nomination}}</p>
+                                            </div>
+                                        @endif
+                                        @if($group)
+                                            <div class="psec-list__item_group">
+                                                Возрастная группа
+                                                <p>{{$group}}</p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    <div id="team" class="section-meta">
+                        <div class="container">
+                            <div class="row meta-row-mobile">
+                                <div class="col-6">
+                                    <div class="meta-item">
+                                        <div class="meta-item__title">Название проекта:</div>
+                                        <div class="meta-item__name">{{$project->name}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="meta-item">
+                                        <div class="meta-item__title">Категория:</div>
+                                        <div class="meta-item__name">{{$project->category}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-6 order-0">
+                                    <div class="meta-item">
+                                        <div class="meta-item__title">Руководитель:</div>
+                                        <div class="meta-item__persons">
+                                            <div class="meta-item__persons_item">
+                                                <div class="meta-item__persons_item--userpic"></div>
+                                                <div class="meta-item__persons_item--name">
+                                                    <div class="det-pr-block">
+                                                        @if($directorUser)
+                                                            <a href="/profile/{{$directorUser->id}}">
+                                                                {{$directorUser->full_name}}
+                                                            </a>
+                                                        @else
+                                                            <div class="det-pr-block-txt">
+                                                                <div class="mb10">
+                                                                    Еще никто не руководит проектом
+                                                                </div>
+                                                                @if($user->id == $project->creator_id)
+                                                                    <a href="" class="hide_on_mobile"
+                                                                       data-window="select-director-project">Выбрать руководителя</a>
+                                                                @else
+                                                                    <a href="" id="director-request"
+                                                                       data-window="director-request"
+                                                                       data-creator-id="{{$project->creator_id}}"
+                                                                       style="cursor:pointer;">Подать заявку на управление проектом</a>
+                                                                @endif
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 order-2 order-md-1">
+                                    <div class="meta-item">
+                                        <div class="meta-item__title">Теги:</div>
+                                        <div class="meta-item__name">
+                                            {{$project->keywords}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 order-1 order-md-2">
+                                    <div class="meta-item">
+                                        <div class="meta-item__title">Участники</div>
+                                        <div class="meta-item__name">
+                                            {{--List of members separated by comma--}}
+                                            @foreach($project->members->take( $project->members->count() - 1 ) as $member)
+                                                <a href="/profile/{{$member->id}}">
+                                                    {{$member->fullname}}
+                                                </a>,
+                                            @endforeach
+                                            <a href="/profile/{{$project->members->last()->id}}">
+                                                {{$project->members->last()->fullname}}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 order-2 order-md-3">
+                                    <div class="meta-item">
+                                        <div class="meta-item__title">Категории:</div>
+                                        <div class="meta-item__name">
+                                            @foreach($project->competencies as $category)
+                                            <div>{{ $category }}</div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row meta-row-mobile">
+                                <div class="col-6">
+                                    <div class="meta-item">
+                                        <div class="meta-item__title">Заявлен:</div>
+                                        <div class="meta-item__name">{{$project->date_custom}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="meta-item">
+                                        <div class="meta-item__title">Подано:</div>
+                                        <div class="meta-item__name">{{$project->count_request_messages}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @if(!$is_director && !$is_creator)
+                        <div class="section-meta like-fav-main-content js-aside-stop">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="like-fav-main-content__item">
+                                            <div class="@if(!$like) dplf-disabled @endif add-like">
+                                                <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="25" cy="25" r="25" fill="#8EC63F"
+                                                            fill-opacity="0.6"></circle>
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                          d="M21.4998 31.65V24.45C21.4998 23.7992 21.884 23.3792 22.4778 22.7301C23.1157 22.0328 23.9954 21.0711 24.9002 19.275C25.461 18.1618 25.4052 17.0486 25.3684 16.3138C25.3606 16.1575 25.3536 16.0184 25.3536 15.9C25.3536 15.225 26.0337 15 26.2604 15C26.9405 15 28.7541 15.9 28.7541 18.6C28.7541 20.5134 28.5062 21.2438 28.2877 21.8879C28.2749 21.9255 28.2623 21.9628 28.2498 22H34.9998C36.9998 22 36.4998 25 35.4998 25C36.4998 25.75 35.7498 28 34.7498 28C35.7498 28.75 35.0314 30.75 33.9998 30.75C34.2814 32.25 33.2498 33 31.9278 33H22.8599C21.9531 33 21.4998 32.55 21.4998 31.65ZM15.5 22.5C14.3954 22.5 13.5 23.3954 13.5 24.5V32.5C13.5 33.6046 14.3954 34.5 15.5 34.5H18.5C19.6046 34.5 20.5 33.6046 20.5 32.5V24.5C20.5 23.3954 19.6046 22.5 18.5 22.5H15.5Z"
+                                                          fill="white"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="like-fav-main-content__item_title">
+                                                Лайков
+                                            </div>
+                                            <div class="like-fav-main-content__item_amount likes-count">
+                                                {{$project->count_likes}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="like-fav-main-content__item">
+                                            <div class="@if(!$favorite) dplf-disabled @endif det-pr-likefav__fav add-favorite">
+                                                <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+                                                     xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="25" cy="25" r="25" fill="#E05B56"
+                                                            fill-opacity="0.6"></circle>
+                                                    <path d="M30.115 18.0183C29.1939 18.0183 27.1257 17.6453 25 20.2669V36.017C28.9679 34.033 35.5 29.7803 35.5 23.9702C35.5 21.7736 34.3663 18.0183 30.115 18.0183Z"
+                                                          fill="white"></path>
+                                                    <path d="M19.885 18.0183C20.8061 18.0183 22.8743 17.6453 25 20.2669V36.017C21.0321 34.033 14.5 29.7803 14.5 23.9702C14.5 21.7736 15.6337 18.0183 19.885 18.0183Z"
+                                                          fill="white"></path>
+                                                </svg>
+                                            </div>
+                                            <div class="like-fav-main-content__item_title">
+                                                В избранном
+                                            </div>
+                                            <div class="like-fav-main-content__item_amount favorite-count">
+                                                {{$project->favorite_count}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                    <div class="section-meta sm-backbtn-section">
+                        <a href="/categories" class="btn">
+                            <svg width="26" height="21" viewBox="0 0 26 21" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M4 9.33333L25.6 9.33333L25.6 11.4667L4 11.4667L13.3333 20.8L10.4 20.8L-4.54595e-07 10.3999L10.4 4.54598e-07L13.3333 5.82818e-07L4 9.33333Z"
+                                      fill="white"/>
+                            </svg>
+                            <span>к конкурсам</span>
+                        </a>
+                    </div>
+
+                    <section class="additional_content no-border" style="display: none;">
+                        <div class="wrapper">
+                            <div class="col850">
+                                <div class="block50">
+                                    <div class="det-pr-block">
+                                        <div class="det-pr-block-header">Теги:</div>
+                                        <div class="det-pr-block-txt">{{$project->keywords}}</div>
+                                    </div>
+                                </div>
+                                <div class="block50">
+                                    <div class="det-pr-block">
+                                        <div class="det-pr-block-header" style="">Участники:
+                                        </div>
+                                        <div class="det-pr-block-txt">
+                                            @foreach($project->members as $key=>$member)
+                                                <a class="mb5"
+                                                   href="/profile/{{$member->id}}">{{$member->full_name}}</a>@if(count($project->members) - 1 != $key)
+                                                    ,
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="block50">
+                                    <div class="det-pr-block">
+                                        <div class="det-pr-block-header">Дата заявки:
+                                        </div>
+                                        <div class="det-pr-block-txt">{{$project->date_custom}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="additional_content" style="display: none;">
+                        <div class="wrapper">
+                            <div class="breadcrumbs">
+                                Вернуться в раздел:
+                            </div>
+                            <div class="go-to-razdel">
+                                <a href="/projects/{{$project->category_id}}">{{$project->category}}</a><sup>{{$project->category_count}}</sup>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-12 col-lg-4 d-none d-lg-block">
+                    <div class="aside-floor">
+                        <div class="det-pr-block">
+                            <div class="det-pr-block-header">
+                                Руководитель:
+                            </div>
+                            @if($directorUser)
+                                <div class="det-pr-block-foto">
+                                    <a class="det-pr-block-foto-img @if($directorUser->referrer) profile__foto--border-green @endif"
+                                       href="/profile/{{$directorUser->id}}"
+                                       @if($directorUser->photo) style="background-image: url(/{{$directorUser->photo}}) @endif ">
+                                        @if($directorUser->referrer)
+                                            <div class="profile__foto_mask"
+                                                 style="background-image: url(/{{$directorUser->referrer->mask}});"></div>
+                                        @endif
+                                    </a>
+                                    <a class="det-pr-block-foto-txt" href="/profile/{{$directorUser->id}}">
+                                        <div class="det-pr-block-foto-txtm">
+                                            {{$directorUser->full_name}}
+                                        </div>
+                                        @if($directorUser->last_place_of_work)
+                                            <div class="det-pr-block-foto-txts">
+                                                {{$directorUser->last_place_of_work['work']}},
+                                                {{$directorUser->last_place_of_work['city']}}
+                                            </div>
+                                        @elseif($directorUser->last_place_of_study)
+                                            <div class="det-pr-block-foto-txts">
+                                                {{$directorUser->last_place_of_study['school']}},
+                                                {{$directorUser->last_place_of_study['city']}}
+                                            </div>
+                                        @endif
+                                    </a>
+                                </div>
+                            @else
+                                <div class="det-pr-block-txt">
+                                    <div class="mb10">
+                                        Еще никто не руководит проектом
+                                    </div>
+                                    @if($user->id == $project->creator_id)
+                                        <a href="" class="hide_on_mobile"
+                                           data-window="select-director-project">Выбрать руководителя</a>
+                                    @else
+                                        <a href="" id="director-request"
+                                           data-window="director-request"
+                                           data-creator-id="{{$project->creator_id}}"
+                                           style="cursor:pointer;">Подать заявку на управление проектом</a>
+                                    @endif
+                                    {{--<a class="btn show_on_mobile" data-window="select-director-project">Стать--}}
+                                    {{--руководителем</a>--}}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="det-pr-block hide-fix">
+                            <div class="det-pr-block-header">
+                                Заявлен:
+                            </div>
+                            <div class="det-pr-block-txt">
+                                {{$project->date_custom}}
+                            </div>
+                        </div>
+                        <div class="det-pr-block hide-fix">
+                            <div class="det-pr-block-header">
+                                Название проекта:
+                            </div>
+                            <div class="det-pr-block-txt">
+                                {{$project->name}}
+                            </div>
+                        </div>
+                        <div class="det-pr-block hide-fix">
+                            <div class="det-pr-block-header">
+                                Категория проекта:
+                            </div>
+                            <div class="det-pr-block-txt">
+                                {{$project->category}}
+                            </div>
+                        </div>
+                        @if($project->status !== 'Проект завершен')
+                            @if($is_director || $is_creator)
+                                <div class="det-pr-block det-pr-block-btns">
+                                    <a href="" class="btn btn-black"
+                                       data-window="want-to-finish-proj" onclick="reachGoal('Click_finish_project', {URL: document.location.href});return true;">Завершить проект</a>
+                                    @if($is_creator)
+                                        <a href="/project/edit/{{$project->id}}"
+                                           class="btn btn-white">Редактировать</a>
+                                    @endif
+                                </div>
+                            @elseif(!$tasks_not_assigned->isEmpty())
+                                <div class="det-pr-block det-pr-block-btns">
+                                    <a class="btn" data-window="want-to-make-proj"
+                                       href="javascript:void(0);"
+                                       style="cursor: pointer">Стать исполнителем</a>
+                                </div>
+                            @endif
+                        @endif
+                        <div class="det-pr-block ">
+                            <div class="det-pr-subblock">
+                                <div class="det-pr-block-header">Подано:</div>
+                                <div class="det-pr-block-txt">
+                                    <b>{{$project->count_request_messages}}</b></div>
+                            </div>
+                            <div class="det-pr-subblock">
+                                <div class="det-pr-block-header ">В избранном:</div>
+                                <div class="det-pr-block-txt">
+                                    <b class="favorite-count">{{$project->favorite_count}}</b>
+                                </div>
+                            </div>
+                            <div class="det-pr-likefav">
+                                @if(!$is_director && !$is_creator)
+                                    <div class="det-pr-likefav__box">
+                                        <button class="@if(!$like) dplf-disabled @endif det-pr-likefav__like add-like">
+                                            <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="25" cy="25" r="25" fill="#8EC63F"
+                                                        fill-opacity="0.6"/>
+                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                      d="M21.4998 31.65V24.45C21.4998 23.7992 21.884 23.3792 22.4778 22.7301C23.1157 22.0328 23.9954 21.0711 24.9002 19.275C25.461 18.1618 25.4052 17.0486 25.3684 16.3138C25.3606 16.1575 25.3536 16.0184 25.3536 15.9C25.3536 15.225 26.0337 15 26.2604 15C26.9405 15 28.7541 15.9 28.7541 18.6C28.7541 20.5134 28.5062 21.2438 28.2877 21.8879C28.2749 21.9255 28.2623 21.9628 28.2498 22H34.9998C36.9998 22 36.4998 25 35.4998 25C36.4998 25.75 35.7498 28 34.7498 28C35.7498 28.75 35.0314 30.75 33.9998 30.75C34.2814 32.25 33.2498 33 31.9278 33H22.8599C21.9531 33 21.4998 32.55 21.4998 31.65ZM15.5 22.5C14.3954 22.5 13.5 23.3954 13.5 24.5V32.5C13.5 33.6046 14.3954 34.5 15.5 34.5H18.5C19.6046 34.5 20.5 33.6046 20.5 32.5V24.5C20.5 23.3954 19.6046 22.5 18.5 22.5H15.5Z"
+                                                      fill="white"/>
+                                            </svg>
+                                            <span class="likefav-popup">
+                                                @if($like)
+                                                    Удалить лайк
+                                                @else
+                                                    Поставить лайк
+                                                @endif
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="det-pr-likefav__box">
+                                        <button class="@if(!$favorite) dplf-disabled @endif det-pr-likefav__fav add-favorite">
+                                            <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+                                                 xmlns="http://www.w3.org/2000/svg">
+                                                <circle cx="25" cy="25" r="25" fill="#E05B56"
+                                                        fill-opacity="0.6"/>
+                                                <path d="M30.115 18.0183C29.1939 18.0183 27.1257 17.6453 25 20.2669V36.017C28.9679 34.033 35.5 29.7803 35.5 23.9702C35.5 21.7736 34.3663 18.0183 30.115 18.0183Z"
+                                                      fill="white"/>
+                                                <path d="M19.885 18.0183C20.8061 18.0183 22.8743 17.6453 25 20.2669V36.017C21.0321 34.033 14.5 29.7803 14.5 23.9702C14.5 21.7736 15.6337 18.0183 19.885 18.0183Z"
+                                                      fill="white"/>
+                                            </svg>
+                                            <span class="likefav-popup">
+                                                @if($favorite)
+                                                    Удалить из избранного
+                                                @else
+                                                    Добавить в избранное
+                                                @endif
+                                            </span>
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="det-pr-block">
+                            @php
+                                $expertiseRequestsRated = $project->expertiseRequestsRated;
+                                $expertiseRequestsNoRated = $project->expertiseRequestsNoRated;
+                                $userId = Illuminate\Support\Facades\Auth::user()->id;
+                            @endphp
+                            @if($expertiseRequestsRated->count())
+                                @php
+                                    $showAllActive = false;
+                                    if ($userId != $project->creator_id) {
+                                        foreach ($expertiseRequestsRated as $expertise) {
+                                            if ($expertise->show_all) {
+                                                $showAllActive = true;
+                                                break;
+                                            }
+                                        }
+                                    } else {
+                                        $showAllActive = true;
+                                    }
+                                @endphp
+                                @if($showAllActive)
+                                    <div class="det-pr-block-header expert-assessment-title">
+                                        Оценки экспертов
+                                    </div>
+                                    @foreach($expertiseRequestsRated as $expertise)
+                                        @if($userId != $project->creator_id && !$expertise->show_all)
+                                            @continue
+                                        @endif
+                                        <div class="det-pr-block-txt expert-assessment">
+                                            @if($expertise->organization->logo)
+                                                <img class="expert-assessment__logo"
+                                                     src="/{{ $expertise->organization->logo }}" alt="">
+                                            @endif
+                                            <div class="expert-assessment__container">
+                                                <div class="expert-assessment__head">
+                                                    <span>{{$expertise->shortDate}}</span>
+                                                    @if($userId == $project->creator_id)
+                                                        <div class="expert-assessment__head__more-btn"
+                                                             id="expert-assessment-dropdown-open">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="18"
+                                                                 height="4" viewBox="0 0 18 4">
+                                                                <path fill="#D8D8D8" fill-rule="evenodd"
+                                                                      d="M16 4a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM9 4a2 2 0 1 1 0-4 2 2 0 0 1 0 4zM2 4a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+                                                            </svg>
+
+                                                            <div class="dropdown" style="display: none"
+                                                                 id="expert-assessment-dropdown">
+                                                                <ul>
+                                                                    <li><a data-subwindow="settings-popup"
+                                                                           data-window="settings-popup" href="#"
+                                                                           data-id="{{$expertise->id}}"><img
+                                                                                    src="/static/img/icons/gear.svg"
+                                                                                    alt=""> Настроить</a></li>
+                                                                    <li><a href="#"
+                                                                           data-remove="remove-expert-assessment"
+                                                                           data-id="{{$expertise->id}}"><img
+                                                                                    src="/static/img/icons/trash.svg"
+                                                                                    alt="">Удалить</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <div class="expert-assessment__title">
+                                                    {{ $expertise->organization->name }}
+                                                </div>
+                                                <div class="expert-assessment__footer green">
+                                                    <a href="/api/download-expertize-result?requestId={{$expertise->id}}&portfolioId={{$project->creator_id}}"
+                                                       target="_blank">
+                                                        <img src="/static/img/icons/download.svg" alt="">
+                                                        <span>Скачать</span>
+                                                    </a>
+                                                    <a data-subwindow="upload-popup" data-window="upload-popup" href="#"
+                                                       data-id="{{$expertise->id}}"
+                                                       data-user="{{$project->creator_id}}">
+                                                        {{--<img src="" alt="">--}}
+                                                        <span>Подробнее</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
+                            @endif
+
+                            @if($expertiseRequestsNoRated->count())
+                                @foreach($expertiseRequestsNoRated as $expertise)
+                                    @if ($expertise->expert_id == $userId)
+                                        <a class="btn btn-green btn-regular expert-assessment__btn"
+                                           data-subwindow="expert-assessment-popup"
+                                           data-window="expert-assessment-popup"
+                                           data-id="{{$expertise->id}}"
+                                           data-user="{{$project->creator_id}}">
+                                            Начать экспертизу
+                                        </a>
+                                        @php
+                                            break;
+                                        @endphp
+                                    @endif
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                    <aside class="aside aside-myself-project js-aside new-project-design-aside">
+                        <div class="wrapper relative">
+                            <div class="det-pr-aside pt50">
+                                <!--если показываем слово "новое", то добавляем сюда класс pt40. Не очень удобно, но это приемлимая цена за отсутсвие дублирования контента-->
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+</div>
+@endsection
