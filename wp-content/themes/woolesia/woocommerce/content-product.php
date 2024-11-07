@@ -60,6 +60,11 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 		 */
 		do_action( 'woocommerce_shop_loop_item_title' );
 
+		?>
+
+		<div class="product-excert"><?php the_content(''); ?></div>
+
+		<?php
 		/**
 		 * Hook: woocommerce_after_shop_loop_item_title.
 		 *
